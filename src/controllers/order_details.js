@@ -14,7 +14,7 @@ const createOrder_detail = async (req, res) => {
     const Order_detailID = uuidv4(); // Tạo ID mới sử dụng uuidv4()
 
     try {
-        const isSuccess = await createNewOrder_detail(order_id, dish_id, quantity, subtotal);
+        const isSuccess = await createNewOrder_detail(Order_detailID, order_id, dish_id, quantity, subtotal);
         if (isSuccess) {
             res.send("Order_detail added successfully");
         } else {

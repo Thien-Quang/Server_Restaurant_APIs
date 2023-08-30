@@ -26,7 +26,7 @@ const createNewMenu = async (id, dish_id, day) => {
     try {
         const [results, fields] = await connection.query(
             `INSERT INTO Menu (id, dish_id, day) VALUES (?,?,?)`,
-            [id, first_name, last_name, position, salary, hire_date]
+            [id, dish_id, day]
         );
         console.log("Insert  successful:", results);
         return true;
@@ -38,7 +38,7 @@ const createNewMenu = async (id, dish_id, day) => {
 const updateMenu = async (id, dish_id, day) => {
     try {
         const [results, fields] = await connection.query(
-            `UPDATE Menu Set dish_id = ? , day = ? ? where id =? `,
+            `UPDATE Menu Set dish_id = ? , day = ? where id =? `,
             [dish_id, day, id]
         );
 

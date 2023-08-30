@@ -1,0 +1,135 @@
+// // Create database
+
+// -- Bảng Nhân viên
+// CREATE TABLE Employees (
+//   id NVARCHAR(50) PRIMARY KEY,
+//   first_name NVARCHAR(50) NOT NULL,
+//   last_name NVARCHAR(50) NOT NULL,
+//   position NVARCHAR(50),
+//   salary DECIMAL(10, 2),
+//   hire_date DATE
+// );
+// INSERT INTO Employees (id, first_name, last_name, position, salary, hire_date)
+// VALUES
+//   ('1', 'John', 'Doe', 'Manager', 75000.00, '2020-01-15'),
+//   ('2', 'Jane', 'Smith', 'Senior Developer', 65000.00, '2018-06-22'),
+//   ('3', 'Michael', 'Johnson', 'Sales Associate', 50000.00, '2019-03-10'),
+//   ('4', 'Emily', 'Williams', 'Human Resources Specialist', 60000.00, '2021-02-05'),
+//   ('5', 'David', 'Brown', 'IT Technician', 55000.00, '2022-07-14');
+
+// -- Bảng Khách hàng
+// CREATE TABLE Customers (
+//   id NVARCHAR(50) PRIMARY KEY,
+//   first_name NVARCHAR(50) NOT NULL,
+//   last_name NVARCHAR(50) NOT NULL,
+//   email VARCHAR(100),
+//   phone VARCHAR(20)
+// );
+
+// INSERT INTO Customers (id, first_name, last_name, email, phone)
+// VALUES
+//   ('1', 'Tran Van', 'Linh', 'TranLinh@gmail.com', '02345678'),
+//   ('2', 'Nguyen Thi', 'Hoa', 'HoaNguyen@gmail.com', '0987654321'),
+//   ('3', 'Le Van', 'Khanh', 'KhanhLe@gmail.com', '0123456789'),
+//   ('4', 'Pham Anh', 'Tuan', 'TuanPham@gmail.com', '0369852147'),
+//   ('5', 'Tran Thi', 'Mai', 'MaiTran@gmail.com', '0789546321');
+// -- Bảng Món ăn
+// CREATE TABLE Dishes (
+//   id NVARCHAR(50) PRIMARY KEY,
+//   name NVARCHAR(100) NOT NULL,
+//   category VARCHAR(50),
+//   price DECIMAL(10, 2)
+// );
+
+// INSERT INTO Dishes (id, name, category, price)
+// VALUES
+//   ('1', 'Spaghetti Bolognese', 'Pasta', 12.99),
+//   ('2', 'Grilled Chicken Sandwich', 'Sandwiches', 9.75),
+//   ('3', 'Caesar Salad', 'Salads', 8.50),
+//   ('4', 'Margherita Pizza', 'Pizza', 10.99),
+//   ('5', 'Beef Stir-Fry', 'Asian', 14.25);
+
+
+// -- Bảng Đơn đặt hàng
+// CREATE TABLE Orders (
+//   id NVARCHAR(50) PRIMARY KEY,
+//   customer_id NVARCHAR(50),
+//   order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+//   total_amount DECIMAL(10, 2),
+//   FOREIGN KEY (customer_id) REFERENCES Customers(id)
+// );
+
+// INSERT INTO Orders (id, customer_id, total_amount)
+// VALUES
+//   ('1', '1', 120.50),
+//   ('2', '2', 75.25),
+//   ('3', '3', 200.00),
+//   ('4', '1', 45.75),
+//   ('5', '4', 150.20);
+
+// -- Bảng Chi tiết đơn hàng
+// CREATE TABLE Order_details (
+//   id NVARCHAR(50) PRIMARY KEY,
+//   order_id NVARCHAR(50),
+//   dish_id NVARCHAR(50),
+//   quantity INT,
+//   subtotal DECIMAL(10, 2),
+//   FOREIGN KEY (order_id) REFERENCES Orders(id),
+//   FOREIGN KEY (dish_id) REFERENCES Dishes(id)
+// );
+// INSERT INTO Order_details (id, order_id, dish_id, quantity, subtotal)
+// VALUES
+//   ('1', '1', '1', 2, 25.98),
+//   ('2', '1', '3', 1, 8.50),
+//   ('3', '2', '2', 3, 29.25),
+//   ('4', '3', '4', 2, 21.98),
+//   ('5', '4', '1', 1, 12.99);
+// -- Bảng Thực đơn
+// CREATE TABLE Menu (
+//   id NVARCHAR(50) PRIMARY KEY,
+//   dish_id NVARCHAR(50),
+//   day DATE,
+//   FOREIGN KEY (dish_id) REFERENCES Dishes(id)
+// );
+// INSERT INTO Menu (id, dish_id, day)
+// VALUES
+//   ('1', '1', '2023-09-01'),
+//   ('2', '2', '2023-09-01'),
+//   ('3', '3', '2023-09-01'),
+//   ('4', '4', '2023-09-01'),
+//   ('5', '5', '2023-09-01');
+// -- Thêm bảng Nguyên liệu
+// CREATE TABLE Materials (
+//   id NVARCHAR(50) PRIMARY KEY,
+//   name VARCHAR(100) NOT NULL,
+//   unit VARCHAR(50),
+//   current_quantity DECIMAL(10, 2)
+// );
+// INSERT INTO Materials (id, name, unit, current_quantity)
+// VALUES
+//   ('1', 'Flour', 'kg', 50.75),
+//   ('2', 'Tomatoes', 'pieces', 120),
+//   ('3', 'Chicken Breast', 'kg', 25.50),
+//   ('4', 'Lettuce', 'pieces', 30),
+//   ('5', 'Mozzarella Cheese', 'kg', 10.25);
+
+// -- Thêm bảng Giao dịch nhập xuất
+// CREATE TABLE Transactions (
+//   id NVARCHAR(50) PRIMARY KEY,
+//   material_id NVARCHAR(50),
+//   transaction_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+//   quantity DECIMAL(10, 2),
+//   transaction_type ENUM('import', 'export'),
+//   FOREIGN KEY (material_id) REFERENCES Materials(id)
+// );
+// INSERT INTO Transactions (id, material_id, quantity, transaction_type)
+// VALUES
+//   ('1', '1', 10.5, 'import'),
+//   ('2', '2', 30, 'import'),
+//   ('3', '3', 5.75, 'export'),
+//   ('4', '4', 10, 'export'),
+//   ('5', '5', 2, 'import');
+
+
+_____________________________________________________________________________
+
