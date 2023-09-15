@@ -3,11 +3,11 @@ const { getCustomers, createCustomers, getCustomerByID, deleteCustomerByID, upda
 
 const router = express.Router();
 
-router.get("/customer", getCustomers)
-router.post("/customer", createCustomers)
-router.get("/customer/:id", getCustomerByID)
-router.delete("/customer/:id", deleteCustomerByID)
-router.put("/customer/:id", updateCustomerByID)
+router.get("/api/customer/", getCustomers)
+router.post("/api/customer", createCustomers)
+router.get("/api/customer/:id", getCustomerByID)
+router.delete("/api/customer/:id", deleteCustomerByID)
+router.put("/api/customer/:id", updateCustomerByID)
 
 
 
