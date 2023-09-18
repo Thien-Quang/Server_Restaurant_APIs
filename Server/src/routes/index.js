@@ -10,6 +10,9 @@ const menuRouter = require('./menu.js');
 const orderRouter = require('./orders.js');
 const order_DetailRouter = require('./order_details.js');
 const transactionRouter = require('./transaction.js');
+const account = require('./account.js')
+const auth = require('./auth.js')
+
 
 const index = (app) => {
 
@@ -21,6 +24,10 @@ const index = (app) => {
     app.use("/", orderRouter);
     app.use("/", order_DetailRouter);
     app.use("/", transactionRouter);
+    app.use("/", account);
+    app.use("/", auth);
+
+
 
 }
 

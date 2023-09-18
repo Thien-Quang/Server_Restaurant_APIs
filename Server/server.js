@@ -6,7 +6,6 @@ require('dotenv').config()
 const routes = require("./src/routes")
 
 
-
 const port = process.env.PORT
 const hostname = process.env.HOST_NAME
 
